@@ -10,11 +10,9 @@ namespace LeetcodeSolutions
 	{
 		static void Main(string[] args)
 		{
-			string[] strs = { "eat", "tea", "tan", "ate", "nat", "bat" };
+			TopKFrequentElements topKFrequentElements = new TopKFrequentElements();
 
-			Solution solution = new Solution();
-
-			solution.GroupAnagrams(strs);
+			topKFrequentElements.TopKFrequent();
 		}
 	}
 }
