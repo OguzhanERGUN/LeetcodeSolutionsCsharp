@@ -1,7 +1,7 @@
 ﻿//347.Top K Frequent Elements
 //Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 
- 
+
 
 //Example 1:
 
@@ -16,25 +16,26 @@
 
 
 
+using LeetcodeSolutions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetcodeSolutions
+namespace System.Collections.Generic
 {
 	public class TopKFrequentElements
 	{
 		public int[] TopKFrequent(int[] nums, int k)
 		{
-			int[] count = new int[nums.Length];
-			Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
+			int[] count = new int[k];
+			var keyValuePairs = new Dictionary<int, int>();
 
 
 			foreach (int i in nums)
 			{
-				if (keyValuePairs.ContainsKey(nums[i]))
+				if (keyValuePairs.ContainsKey(i))
 				{
 					keyValuePairs[i]++;
 				}
@@ -44,17 +45,18 @@ namespace LeetcodeSolutions
 				}
 			}
 
-
-			foreach (var item in keyValuePairs)
+			var pq = new PriorityQueue<int, int>();
+			foreach (var key in keyValuePairs.Keys)
 			{
-				if (item.Value >= k)
-				{
-
-				}
+				pq.Enqueue(key, keyValuePairs[key]);
+				if (pq.Count > k) pq.Dequeue();
 			}
-
-
-			return null;
+			int i2 = k;
+			while (pq.Count > 0)
+			{
+				count[--i2] = pq.Dequeue();
+			}
+			return count;
 		}
 
 
