@@ -45,17 +45,17 @@ namespace System.Collections.Generic
 				}
 			}
 
-			var pq = new PriorityQueue<int, int>();
-			foreach (var key in keyValuePairs.Keys)
-			{
-				pq.Enqueue(key, keyValuePairs[key]);
-				if (pq.Count > k) pq.Dequeue();
-			}
-			int i2 = k;
-			while (pq.Count > 0)
-			{
-				count[--i2] = pq.Dequeue();
-			}
+			//var pq = new PriorityQueue<int, int>();
+			//foreach (var key in keyValuePairs.Keys)
+			//{
+			//	pq.Enqueue(key, keyValuePairs[key]);
+			//	if (pq.Count > k) pq.Dequeue();
+			//}
+			//int i2 = k;
+			//while (pq.Count > 0)
+			//{
+			//	count[--i2] = pq.Dequeue();
+			//}
 			return count;
 		}
 
